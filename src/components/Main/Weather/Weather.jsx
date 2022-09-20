@@ -15,11 +15,12 @@ class Weather extends Component {
       event.preventDefault();
       let latitude,longitude;
       const cityValue = event.target.city.value;
-      const city = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${cityValue}&limit=5&appid=2590be97b9254712d4881a15ccfa4332`);
+      const city = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${cityValue}&limit=5&appid=${process.env.REACT_APP_APIKEY}`);
       const cityData = await city.json();
       latitude=cityData[0].lat;
       longitude=cityData[0].lon;
-      const res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=2590be97b9254712d4881a15ccfa4332`);
+      console.log(latitude,longitude);
+      const res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_APIKEY}`);
       const data = await res.json();
       this.setState({
         weatherList: data.list
@@ -29,7 +30,7 @@ class Weather extends Component {
     }
 
     defaultLocation = async()=>{
-      const res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=40.42567179785109&lon=-3.6891496867451092&appid=2590be97b9254712d4881a15ccfa4332`);
+      const res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=40.42567179785109&lon=-3.6891496867451092&appid=${process.env.REACT_APP_APIKEY}`);
       const data = await res.json();
       this.setState({
         weatherList:data.list
@@ -46,7 +47,7 @@ class Weather extends Component {
           <button type="submit" value="search">Buscar</button>
         </form>
         <h1>Weather</h1>
-        {this.defaultLocation()};
+        {/* {this.defaultLocation()}; */}
         {
           this.state.weatherList.map(predic=><Predictions data={predic} key={uuidv4()}/>)
         }
@@ -59,7 +60,7 @@ class Weather extends Component {
 }
 
 Weather.defaultProps = {
-  defaultList:this.defaultList()
+  defaultList:[]
 }
 
 export default Weather;
