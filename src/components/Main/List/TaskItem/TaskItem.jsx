@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './ProductItem.css'
+import './TaskItem.css'
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -7,7 +7,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-export class ProductItem extends Component {
+export class TaskItem extends Component {
   //rconst
   constructor(props) {
     super(props)
@@ -18,24 +18,19 @@ export class ProductItem extends Component {
   }
 
   render() {
-    const { info, price, image } = this.props.data;
-    let url_img = image || "https://images.hola.com/imagenes/cocina/recetas/20210511189370/coctel-caipirinha/0-950-898/caipirinha-adobe-m.jpg"
+    const { date } = this.props.data;
+    
 
     return (
-      <Card sx={{ width: 300, margin: 5 }} className="product-item" >
-        <CardMedia
-          component="img"
-          alt="green iguana"
-          height="140"
-          image={url_img}
+      <Card sx={{ width: 300, margin: 5 }} className="task-item" >
+        <CardMedia 
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {this.state.name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            <p>{info}</p>
-            <h3>{price} €</h3>
+            <p>{date}</p>
           </Typography>
         </CardContent>
         <CardActions>
@@ -55,4 +50,4 @@ export class ProductItem extends Component {
   }
 }
 
-export default ProductItem
+export default TaskItem

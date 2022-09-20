@@ -1,22 +1,20 @@
 import React, { Component } from 'react'
-import ProductList from './ProductList'
 import { Route, Routes } from 'react-router-dom'
-import About from './About';
-import Contact from './Contact';
+
+import ProductList from './List'
 import Home from './Home';
 import NotFound from '../NotFound';
-import Staff from './Staff';
+import List from './List/List'
+import Weather from './Weather';
 
 export class Main extends Component {
   render() {
     return (
       <main>
         <Routes>
-          <Route element={<About />} path={"/about"} />
-          <Route element={<Contact />} path={"/contact"} />
           <Route element={<Home />} path={"/"} />
-          <Route element={<ProductList />} path={"/products"} />
-          <Route element={<Staff />} path={"/staff"} />
+          <Route element={<List />} path={"/tasks"} />
+          <Route element={<Weather />} path={"/weather"} />
           <Route element={<NotFound />} path={"/*"} />
         </Routes>
       </main>

@@ -6,10 +6,10 @@ class Nav extends Component {
   render() {
     return <nav className="nav-bar">
       <Link to="/">Home</Link>
-      <Link to="/products">Products</Link>
-      <Link to="/staff">Staff</Link>
-      <Link to="/about">About</Link>
-      <Link to="/contact">Contact</Link>
+      <Link to="/tasks">Todo</Link>
+      <Link to="/weather">Weather</Link>
+   
+    
     </nav>;
   }
 }

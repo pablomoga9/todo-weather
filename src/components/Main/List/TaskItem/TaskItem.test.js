@@ -1,10 +1,10 @@
 import React from "react";
 import { shallow } from "enzyme";
-import Pokemon from "./Pokemon";
+import TaskItem from "./TaskItem";
 
-describe("Pokemon", () => {
+describe("TaskItem", () => {
   test("matches snapshot", () => {
-    const wrapper = shallow(<Pokemon />);
+    const wrapper = shallow(<TaskItem />);
     expect(wrapper).toMatchSnapshot();
   });
 });
